@@ -1,9 +1,3 @@
-var React = require('react');
+import Base from "./Base"
 
-var ReactMinions = React.createClass({
-	render () {
-		return <div>React Minions</div>;
-	}
-});
-
-export default ReactMinions;
+export default { Base }

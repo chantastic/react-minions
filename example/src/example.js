@@ -1,15 +1,17 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactMinions = require('react-minions');
+import React from "react"
+import ReactDOM from "react-dom"
+import {
+  Base,
+} from "react-minions"
 
-var App = React.createClass({
-	render () {
-		return (
-			<div>
-				<ReactMinions />
-			</div>
-		);
-	}
-});
+const App = () => (
+  <div>
+    <Base
+      m={0}
+      p={2}
+      unit="rem"
+    >Test</Base>
+  </div>
+)
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"))
