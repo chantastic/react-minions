@@ -16,14 +16,7 @@
     "camelcase": ["error", {"properties": "never"}],
     "comma-dangle": ["error", "always-multiline"],
     "no-underscore-dangle": "off",
-    "quotes": [
-      2,
-      "double",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
-    ],
+    "quotes": ["error", "double"],
     "semi": ["error", "never"],
     "strict": "off",
     "react/prop-types": 1,
