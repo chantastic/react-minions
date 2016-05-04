@@ -15,6 +15,7 @@ function getProps ({
   return {
     tagName: "div",
     ...props,
+    minionsComponentClass: "Block",
     style: getStyles(style),
   }
 }
