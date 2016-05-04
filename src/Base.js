@@ -12,14 +12,21 @@ const Base = ({
 }) => {
   const classes = classNames(
     {},
-    className,
-    typeof m    === "number" && `m-${m}${getUnitShorthand(unit)}`,
-    typeof m.mn === "number" && `m-${m.mn}${getUnitShorthand(unit)}@mn`,
-    typeof m.xs === "number" && `m-${m.xs}${getUnitShorthand(unit)}@xs`,
-    typeof m.sm === "number" && `m-${m.sm}${getUnitShorthand(unit)}@sm`,
-    typeof m.md === "number" && `m-${m.md}${getUnitShorthand(unit)}@md`,
-    typeof m.lg === "number" && `m-${m.lg}${getUnitShorthand(unit)}@lg`,
-    typeof m.xl === "number" && `m-${m.xl}${getUnitShorthand(unit)}@xl`,
+    typeof className === "string" && className,
+    typeof className === "object" && typeof className.mn === "string" && className.mn.split(" ").map(c => `${c}@mn`).join(" "),
+    typeof className === "object" && typeof className.xs === "string" && className.xs.split(" ").map(c => `${c}@xs`).join(" "),
+    typeof className === "object" && typeof className.sm === "string" && className.sm.split(" ").map(c => `${c}@sm`).join(" "),
+    typeof className === "object" && typeof className.md === "string" && className.md.split(" ").map(c => `${c}@md`).join(" "),
+    typeof className === "object" && typeof className.lg === "string" && className.lg.split(" ").map(c => `${c}@lg`).join(" "),
+    typeof className === "object" && typeof className.xl === "string" && className.xl.split(" ").map(c => `${c}@xl`).join(" "),
+
+    typeof m                             === "number" && `m-${m}${getUnitShorthand(unit)}`,
+    typeof m === "object" && typeof m.mn === "number" && `m-${m.mn}${getUnitShorthand(unit)}@mn`,
+    typeof m === "object" && typeof m.xs === "number" && `m-${m.xs}${getUnitShorthand(unit)}@xs`,
+    typeof m === "object" && typeof m.sm === "number" && `m-${m.sm}${getUnitShorthand(unit)}@sm`,
+    typeof m === "object" && typeof m.md === "number" && `m-${m.md}${getUnitShorthand(unit)}@md`,
+    typeof m === "object" && typeof m.lg === "number" && `m-${m.lg}${getUnitShorthand(unit)}@lg`,
+    typeof m === "object" && typeof m.xl === "number" && `m-${m.xl}${getUnitShorthand(unit)}@xl`,
 
     typeof my                              === "number" && `my-${my}${getUnitShorthand(unit)}`,
     typeof my === "object" && typeof my.mn === "number" && `my-${my.mn}${getUnitShorthand(unit)}@mn`,
@@ -117,7 +124,7 @@ const Base = ({
     typeof pb === "object" && typeof pb.lg === "number" && `pb-${pb.lg}${getUnitShorthand(unit)}@lg`,
     typeof pb === "object" && typeof pb.xl === "number" && `pb-${pb.xl}${getUnitShorthand(unit)}@xl`,
 
-    typeof                              pl === "number" && `pl-${pl}${getUnitShorthand(unit)}`
+    typeof                              pl === "number" && `pl-${pl}${getUnitShorthand(unit)}`,
     typeof pl === "object" && typeof pl.mn === "number" && `pl-${pl.mn}${getUnitShorthand(unit)}@mn`,
     typeof pl === "object" && typeof pl.xs === "number" && `pl-${pl.xs}${getUnitShorthand(unit)}@xs`,
     typeof pl === "object" && typeof pl.sm === "number" && `pl-${pl.sm}${getUnitShorthand(unit)}@sm`,
@@ -147,7 +154,17 @@ const UNITS = PropTypes.oneOf(["px", "em", "rem", "p", "e", "r"])
 
 /*eslint-disable react/sort-prop-types */
 Base.propTypes = {
-  className: React.PropTypes.string.isRequired,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      mn: PropTypes.string,
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+    }),
+  ]).isRequired,
   m:  MEASUREMENTS,
   my: MEASUREMENTS,
   mx: MEASUREMENTS,
