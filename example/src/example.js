@@ -2,10 +2,20 @@ import React from "react"
 import ReactDOM from "react-dom"
 import {
   Base,
+  Block,
 } from "react-minions"
 
 const App = () => (
   <div>
+    <article>
+      <h2>Block</h2>
+
+      <Block>This is a <code>Block</code></Block>
+{`<Block className="m-2" />
+
+// => <div style="display: block" class="m-2r"></div>`}
+    </article>
+
     <article>
       <h2>Base</h2>
 

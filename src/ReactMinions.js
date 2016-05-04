@@ -1,3 +1,7 @@
 import Base from "./Base"
+import Block from "./Block"
 
-export default { Base }
+export default {
+  Base,
+  Block,
+}

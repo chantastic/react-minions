@@ -7,11 +7,12 @@ const Base = ({
   m, my, mx, mt, mr, mb, ml,
   p, py, px, pt, pr, pb, pl,
   unit,
+  tagName,
   className,
     ...props,
 }) => {
+  const TagName = tagName || "div"
   const classes = classNames(
-    {},
     typeof className === "string" && className,
     typeof className === "object" && typeof className.mn === "string" && className.mn.split(" ").map(c => `${c}@mn`).join(" "),
     typeof className === "object" && typeof className.xs === "string" && className.xs.split(" ").map(c => `${c}@xs`).join(" "),
@@ -133,7 +134,7 @@ const Base = ({
     typeof pl === "object" && typeof pl.xl === "number" && `pl-${pl.xl}${getUnitShorthand(unit)}@xl`,
   )
 
-  return <div {...props} className={classes} />
+  return <TagName {...props} className={classes} />
 }
 
 const SCALE = PropTypes.oneOf([0,.25,.5,.75,1,2,3,4])
