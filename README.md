@@ -1,7 +1,10 @@
 # React Minions
 
-__COMPONENT DESCRIPTION GOES HERE__
+!!!!!WIP!!!!!
 
+Feel free to follow along. Don't use it.
+
+vvvvvv BOILERPLATE vvvvvv
 
 ## Demo & Examples
 

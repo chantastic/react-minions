@@ -41,7 +41,5 @@
     "watch": "gulp watch:lib"
   },
   "keywords": [
-    "react",
-    "react-component"
   ]
 }

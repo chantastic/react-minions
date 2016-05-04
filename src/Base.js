@@ -185,7 +185,7 @@ Base.propTypes = {
 
 Base.defaultProps = {
   className: "",
-  unit: "em",
+  unit: "rem",
 }
 
 export default Base
