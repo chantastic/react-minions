@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import {
   Base,
   Block,
+  Debug,
 } from "react-minions"
 import Minionize from "../../src/Minionize"
 
@@ -51,6 +52,7 @@ const App = () => (
     <div>
       Testing ground
 
+      <Debug minions={{ mn: "p-0", md: "p-1" }}>Testing</Debug>
       <MinionizedComponent className="blah" minions={{ mn: "p-0", md: "p-1" }}>Yo</MinionizedComponent>
       <Base className="blah" minions={{ mn: "p-0", md: "p-1" }}>hi</Base>
     </div>
