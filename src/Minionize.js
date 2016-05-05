@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 
-import React, { createClass } from "react"
+import React, { Component } from "react"
 import mx from "./minionClassNames"
 
-const Minionize = Composed => createClass({
-  displayName: "Minionize",
-
+const Minionize = Composed => class Minionize extends Component {
   render () {
     const {
       className,
@@ -19,7 +17,7 @@ const Minionize = Composed => createClass({
         {...props}
       />
     )
-  },
-})
+  }
+}
 
 export default Minionize
