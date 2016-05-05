@@ -1,4 +1,4 @@
-import React, { PropTypes} from "react"
+import React, { PropTypes } from "react"
 import ReactDOM from "react-dom"
 import {
   Base,
@@ -42,14 +42,37 @@ APIArticle.defaultProps = {
 const App = () => (
   <div>
     <APIArticle
+      abstract="A classnames wrapper that accepts objects of media-query keywords"
+      example="minionClassNames(this.props.className)"
+      title="minionClassNames"
+      usage={`minionClassNames(classNames: <String | Object>, other: <String>)
+minionClassNames({ mn: "p-0", md: "p-1" }, "something-else")
+
+// => "something-else p-0@mn p-1@md"`}
+    />
+
+    <APIArticle
+      abstract="An HoC for adding minions to existing Components"
+      example="none yet"
+      title="Minionize"
+      usage={`const Greeting = (props) => <div {...props} />
+
+const MinionsGreeting = Minionize(Greeting)
+
+<MinionsGreeting className={{ mn: "m-1" }}>Greeting</MinionsGreeting>
+
+//=> <div class="m-1@mn">Greeting</div>
+`}
+    />
+
+    <APIArticle
       abstract="display: block"
       example={<Block>This is a <code>Block</code></Block>}
       title="Block"
       usage={`<Block className="m-2" />
 
 // => <div style="display: block" class="m-2r"></div>`}
-    >
-    </APIArticle>
+    />
 
     <APIArticle
       abstract="The foundation of it all"

@@ -1,26 +1,23 @@
 import React, { PropTypes } from "react"
 import classNames from "classnames"
+import mx from "./minionClassNames"
+
+const getClassName = (className, other) => {
+  return classNames(
+    other,
+    mx(className),
+  )
+}
 
 const Base = ({
   className,
-  minionsComponentClass,
+  componentClassName,
   tagName,
   ...props,
 }) => {
   const TagName = tagName || "div"
-  const classes = classNames(
-    typeof minionsComponentClass === "string" && minionsComponentClass,
 
-    typeof className === "string" && className,
-    typeof className === "object" && typeof className.mn === "string" && className.mn.split(" ").map(c => `${c}@mn`).join(" "),
-    typeof className === "object" && typeof className.xs === "string" && className.xs.split(" ").map(c => `${c}@xs`).join(" "),
-    typeof className === "object" && typeof className.sm === "string" && className.sm.split(" ").map(c => `${c}@sm`).join(" "),
-    typeof className === "object" && typeof className.md === "string" && className.md.split(" ").map(c => `${c}@md`).join(" "),
-    typeof className === "object" && typeof className.lg === "string" && className.lg.split(" ").map(c => `${c}@lg`).join(" "),
-    typeof className === "object" && typeof className.xl === "string" && className.xl.split(" ").map(c => `${c}@xl`).join(" "),
-  )
-
-  return <TagName {...props} className={classes} />
+  return <TagName {...props} className={getClassName(className, componentClassName)} />
 }
 
 Base.propTypes = {
@@ -35,13 +32,13 @@ Base.propTypes = {
       xl: PropTypes.string,
     }),
   ]).isRequired,
-  minionsComponentClass: PropTypes.string.isRequired,
+  componentClassName: PropTypes.string.isRequired,
   tagName: PropTypes.string.isRequired,
 }
 
 Base.defaultProps = {
   className: "",
-  minionsComponentClass: "Base",
+  componentClassName: "Base",
   tagName: "div",
 }
 
