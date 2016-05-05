@@ -14,6 +14,8 @@ const Base = ({
 }
 
 Base.propTypes = {
+  className: PropTypes.string.isRequired,
+  componentClassName: PropTypes.string.isRequired,
   minions: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
@@ -25,13 +27,13 @@ Base.propTypes = {
       xl: PropTypes.string,
     }),
   ]).isRequired,
-  componentClassName: PropTypes.string.isRequired,
   tagName: PropTypes.string.isRequired,
 }
 
 Base.defaultProps = {
-  minions: "",
+  className: "",
   componentClassName: "Base",
+  minions: "",
   tagName: "div",
 }
 
