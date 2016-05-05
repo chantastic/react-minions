@@ -1,7 +1,8 @@
 import classNames from "classnames"
 
-export default function (minionClassNames) {
+export default function (minionClassNames, ...other) {
   return classNames(
+    other,
     typeof minionClassNames === "object" && typeof minionClassNames.mn === "string" && minionClassNames.mn.split(" ").map(c => `${c}@mn`).join(" "),
     typeof minionClassNames === "object" && typeof minionClassNames.xs === "string" && minionClassNames.xs.split(" ").map(c => `${c}@xs`).join(" "),
     typeof minionClassNames === "object" && typeof minionClassNames.sm === "string" && minionClassNames.sm.split(" ").map(c => `${c}@sm`).join(" "),

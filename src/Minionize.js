@@ -9,12 +9,13 @@ const Minionize = Composed => createClass({
   render () {
     const {
       className,
+      minions,
       ...props,
     } = this.props
 
     return (
       <Composed
-        className={mx(className)}
+        className={mx(minions, className)}
         {...props}
       />
     )

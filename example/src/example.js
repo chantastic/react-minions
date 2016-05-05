@@ -1,9 +1,10 @@
-import React, { PropTypes } from "react"
+import React, { PropTypes, Component } from "react"
 import ReactDOM from "react-dom"
 import {
   Base,
   Block,
 } from "react-minions"
+import Minionize from "../../src/Minionize"
 
 const APIArticle = ({
   abstract,
@@ -39,13 +40,26 @@ APIArticle.defaultProps = {
   children: "",
 }
 
+
+
+const MyComponent = props => <div {...props}>hi</div>
+
+const MinionizedComponent = Minionize(MyComponent)
+
 const App = () => (
   <div>
+    <div>
+      Testing ground
+
+      <MinionizedComponent className="blah" minions={{ mn: "p-0", md: "p-1" }}>Yo</MinionizedComponent>
+      <Base className="blah" minions={{ mn: "p-0", md: "p-1" }}>hi</Base>
+    </div>
+
     <APIArticle
       abstract="A classnames wrapper that accepts objects of media-query keywords"
       example="minionClassNames(this.props.className)"
       title="minionClassNames"
-      usage={`minionClassNames(classNames: <String | Object>, other: <String>)
+      usage={`minionClassNames(minions: <Object>, other: <Any>)
 minionClassNames({ mn: "p-0", md: "p-1" }, "something-else")
 
 // => "something-else p-0@mn p-1@md"`}
@@ -59,7 +73,7 @@ minionClassNames({ mn: "p-0", md: "p-1" }, "something-else")
 
 const MinionsGreeting = Minionize(Greeting)
 
-<MinionsGreeting className={{ mn: "m-1" }}>Greeting</MinionsGreeting>
+<MinionsGreeting minions={{ mn: "m-1" }}>Greeting</MinionsGreeting>
 
 //=> <div class="m-1@mn">Greeting</div>
 `}
@@ -78,11 +92,11 @@ const MinionsGreeting = Minionize(Greeting)
       abstract="The foundation of it all"
       example={<Base>This is the <code>Base</code> component </Base>}
       title="Base"
-      usage={`<Base className={{ mn: "p-0", md: "p-1" }} />
+      usage={`<Base minions={{ mn: "p-0", md: "p-1" }} />
 
 // => <div class="p-0@mn p-1@md"></div>`}
     >
-      <code>Base</code> is a unique component. It can take a string or object as "className". If you provide an object, it'll honor these keys:{" "}
+      <code>Base</code> is the foundation of the available `react-minions` components. It can be used directly but you might be more inclined to use the provided HoC or `minionClassNames` function. <code>Base</code> honor these keys:{" "}
         <code>mn</code>,{" "}
         <code>xs</code>,{" "}
         <code>sm</code>,{" "}

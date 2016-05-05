@@ -1,27 +1,20 @@
 import React, { PropTypes } from "react"
-import classNames from "classnames"
 import mx from "./minionClassNames"
-
-const getClassName = (className, other) => {
-  return classNames(
-    other,
-    mx(className),
-  )
-}
 
 const Base = ({
   className,
   componentClassName,
+  minions,
   tagName,
   ...props,
 }) => {
   const TagName = tagName || "div"
 
-  return <TagName {...props} className={getClassName(className, componentClassName)} />
+  return <TagName {...props} className={mx(minions, componentClassName, className)} />
 }
 
 Base.propTypes = {
-  className: PropTypes.oneOfType([
+  minions: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       mn: PropTypes.string,
@@ -37,7 +30,7 @@ Base.propTypes = {
 }
 
 Base.defaultProps = {
-  className: "",
+  minions: "",
   componentClassName: "Base",
   tagName: "div",
 }
